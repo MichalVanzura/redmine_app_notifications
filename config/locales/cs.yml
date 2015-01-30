@@ -1,0 +1,17 @@
+# English strings go here for Rails i18n
+en:
+  field_app_notification: "Notifikace v aplikaci"
+  notifications: "Notifikace"
+  see_all: "Všechny"
+  notifications_events_settings: "Nastavení udalostí notifikací"
+  issue_added: "Přidání úkolu"
+  issue_updated: "Změna úkolu"
+  issue_note_added: "Přidána poznámka k úkolu"
+  issue_status_updated: "Změna statusu"
+  issue_assigned_to_updated: "Přiřazení úkolu"
+  issue_priority_updated: "Změna priority"
+  mark_as_seen: "Označit jako zobrazené"
+  mark_all_as_seen: "Označit vše jako zobrazené"
+  viewed_notification: "zobrazené notifikace"
+  new_notification: "nové notifikace"
+  filter_button: "Filtrovat"

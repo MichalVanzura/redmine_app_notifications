@@ -1,0 +1,28 @@
+<h2><%= l(:notifications) %></h2>
+
+<%= form_tag("/app-notifications", method: "get") do %>
+	<%= check_box_tag(:viewed, 1, @viewed) %>
+	<%= label_tag(:viewed, l(:viewed_notification)) %>
+	<%= check_box_tag(:new, 1, @new) %>
+	<%= label_tag(:new, l(:new_notification)) %>
+	<%= submit_tag(l(:filter_button)) %>
+<% end %>
+<hr />
+
+<% @app_notifications.each do |notification| %>
+	<div class="notification">
+		<% if notification.journal.present? %>
+			<%= render :partial => 'issues/issue_edit', :formats => [:html], :locals => { :notification => notification, :journal => notification.journal, :journal_details => details_to_strings(notification.journal.visible_details(notification.author), false, :only_path => false) }%>
+		<% else %>
+			<%= render :partial => 'issues/issue_add', :formats => [:html], :locals => { :notification => notification }%>
+		<% end %>
+		<div>
+			<%= format_time(notification.created_on) %>
+		</div>
+		<br>
+	</div>
+<% end %>
+
+<p class="pagination"><%= pagination_links_full @app_notifications_pages, @app_notifications_count %></p>
+
+<%= button_to l(:mark_all_as_seen), action: "view_all" %>

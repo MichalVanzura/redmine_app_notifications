@@ -1,0 +1,8 @@
+<a href="<%= url_for(:controller => 'app_notifications', :action => 'view', :id => notification.id, :issue_id => notification.issue.id) %>">
+	<div class="notification-container <%= 'new' if !notification.viewed %>">
+		<div class="notification-title">
+			<%= l(:text_issue_added, :id => "##{notification.issue.id}", :author => h(notification.issue.author)) %>
+		</div>
+		<div class="notification-date"><%= format_time(notification.created_on) %></div>
+	</div>
+</a>

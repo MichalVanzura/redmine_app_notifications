@@ -1,0 +1,17 @@
+# English strings go here for Rails i18n
+en:
+  field_app_notification: "In app notifications"
+  notifications: "Notifications"
+  see_all: "See All"
+  notifications_events_settings: "In app notifications events settings"
+  issue_added: "Issue added"
+  issue_updated: "Issue updated"
+  issue_note_added: "Issue note added"
+  issue_status_updated: "Issue status updated"
+  issue_assigned_to_updated: "Issue assigned"
+  issue_priority_updated: "Issue priority updated"
+  mark_as_seen: "Mark as seen"
+  mark_all_as_seen: "Mark all as seen"
+  viewed_notification: "viewed notifications"
+  new_notification: "new notifications"
+  filter_button: "Filter"
