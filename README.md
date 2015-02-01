@@ -1,8 +1,8 @@
-= redmine_app_notifications
+# redmine_app_notifications
 
 App notifications plugin provides simple in application notifications for Redmine. It can replace default e-mail notifications.
 
-== Installation and Setup
+## Installation and Setup
 
 1. Follow the Redmine plugin installation steps at: http://www.redmine.org/wiki/redmine/Plugins
 2. Run the plugin migrations `rake db:migrate_plugins`
