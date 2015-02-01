@@ -5,7 +5,7 @@ App notifications plugin provides simple in application notifications for Redmin
 ## Installation and Setup
 
 1. Follow the Redmine plugin installation steps at: http://www.redmine.org/wiki/redmine/Plugins
-2. Run the plugin migrations `rake db:migrate_plugins`
+2. Run the plugin migrations `rake redmine:plugins:migrate RAILS_ENV=production`
 3. Optional if you want to use Faye for server to client notifications
   1. Install the Thin server `gem install thin` or configure faye.ru accordingly to the server you use. See https://github.com/faye/faye-websocket-ruby#running-your-socket-application for more details.
   2. Start the Faye server `rackup faye.ru -E production -s thin` or modify this to the server you want to use.
