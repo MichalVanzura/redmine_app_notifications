@@ -67,6 +67,13 @@
 .notification-container.new:hover {
 	background-color: #FFFFFF;
 }
+.notification {
+	margin: 2px;
+	padding: 7px;
+}
+.notification.new {
+	background-color: #F0F0FF;
+}
 #notificationsBody a {
 	color: #121212;
 	text-decoration: none;
@@ -97,4 +104,22 @@
 
 a.view-notification {
 	float: right;
+}
+
+.push-notification {
+    background-color: #333;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    color: #fff;
+    padding: 15px 15px 15px 30px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    background-repeat: no-repeat;
+    background-position: 7px center;
+    vertical-align: middle;
+    box-shadow: 4px 4px 4px #000;
+    -webkit-box-shadow: 4px 4px 4px #000;
+    -moz-box-shadow: 4px 4px 4px #000;
 }

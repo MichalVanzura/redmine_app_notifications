@@ -37,6 +37,7 @@ $(document).ready(function()
         	url: $(this).attr("href"),
         	dataType: 'html',
         	success: function() {
+        		link.parent().removeClass( "new" );
         		link.remove();
 			}
         });

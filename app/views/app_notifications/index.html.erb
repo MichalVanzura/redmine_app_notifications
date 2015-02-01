@@ -10,7 +10,7 @@
 <hr />
 
 <% @app_notifications.each do |notification| %>
-	<div class="notification">
+	<div class="notification <%= "new" if !notification.viewed %>">
 		<% if notification.journal.present? %>
 			<%= render :partial => 'issues/issue_edit', :formats => [:html], :locals => { :notification => notification, :journal => notification.journal, :journal_details => details_to_strings(notification.journal.visible_details(notification.author), false, :only_path => false) }%>
 		<% else %>

@@ -20,14 +20,15 @@ Redmine::Plugin.register :redmine_app_notifications do
     :html => {:id => 'notification_count'}
   }
 
-  settings :default => [
-      'issue_added',
-      'issue_updated', 
-      'issue_note_added', 
-      'issue_status_updated', 
-      'issue_assigned_to_updated', 
-      'issue_priority_updated'
-    ], :partial => 'settings/app_notifications_settings'
+  settings :default => {
+      'issue_added' => 'on',
+      'issue_updated' => 'on', 
+      'issue_note_added' => 'on', 
+      'issue_status_updated' => 'on', 
+      'issue_assigned_to_updated' => 'on', 
+      'issue_priority_updated' => 'on',
+      'faye_server_adress' => 'http://localhost:9292/faye'
+    }, :partial => 'settings/app_notifications_settings'
 end
 
 require_dependency 'app_notifications_hook_listener'

@@ -22,7 +22,7 @@ class AppNotificationsController < ApplicationController
         @limit = 10
         @app_notifications_pages = Paginator.new @app_notifications.count, @limit, params['page']
         @offset ||= @app_notifications_pages.offset
-        @app_notifications.limit(@limit).offset(@offset)
+        @app_notifications = @app_notifications.limit(@limit).offset(@offset)
       end
     end
   end
