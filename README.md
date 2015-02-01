@@ -1,4 +1,4 @@
-# redmine_app_notifications
+# Redmine App Notifications
 
 App notifications plugin provides simple in application notifications for Redmine. It can replace default e-mail notifications.
 
