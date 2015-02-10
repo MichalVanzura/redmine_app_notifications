@@ -1,5 +1,4 @@
 class AppNotificationsHookListener < Redmine::Hook::ViewListener
-  include AppNotificationsHelper
 
   render_on :view_my_account_preferences, :partial => "app_notifications/my_account_preferences" 
   render_on :view_layouts_base_html_head, :partial => "app_notifications/layouts_base_html_head"
@@ -30,7 +29,7 @@ class AppNotificationsHookListener < Redmine::Hook::ViewListener
             :recipient_id => user.id,
           })
           message = I18n.t(:text_issue_updated, :id => "##{@issue.id}", :author => h(@journal.user))
-          send_notification(user, message, notification)
+          notification.deliver(message)
         end
       end
     end
@@ -52,7 +51,7 @@ class AppNotificationsHookListener < Redmine::Hook::ViewListener
             :recipient_id => user.id,
           })
           message = I18n.t(:text_issue_added, :id => "##{@issue.id}", :author => h(@author))
-          send_notification(user, message, notification)
+          notification.deliver(message)
         end
       end
     end

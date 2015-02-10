@@ -1,10 +1,10 @@
 Redmine::Plugin.register :redmine_app_notifications do
   name 'Redmine App Notifications plugin'
   author 'Michal Vanžura'
-  description 'This is a plugin for Redmine'
+  description 'App notifications plugin provides simple in application notifications. It can replace default e-mail notifications.'
   version '0.0.1'
-  url 'http://example.com/path/to/plugin'
-  author_url 'http://example.com/about'
+  url 'https://github.com/MichalVanzura/redmine_app_notifications'
+  author_url 'https://github.com/MichalVanzura/redmine_app_notifications'
 
   menu :top_menu, :app_notifications, { :controller => 'app_notifications', :action => 'index' }, {
   	:caption => :notifications, 
@@ -33,4 +33,3 @@ end
 
 require_dependency 'app_notifications_hook_listener'
 require_dependency 'app_notifications_account_patch'
-require_dependency 'app_notifications_helper'

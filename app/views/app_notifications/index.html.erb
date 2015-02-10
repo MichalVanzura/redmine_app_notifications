@@ -22,7 +22,8 @@
 		<br>
 	</div>
 <% end %>
-
-<p class="pagination"><%= pagination_links_full @app_notifications_pages, @app_notifications_count %></p>
+<% unless @app_notifications.empty? %>
+	<p class="pagination"><%= pagination_links_full @app_notifications_pages, @app_notifications_count %></p>
+<% end %>
 
 <%= button_to l(:mark_all_as_seen), action: "view_all" %>

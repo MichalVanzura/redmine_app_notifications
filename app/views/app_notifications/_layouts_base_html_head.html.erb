@@ -5,17 +5,17 @@
     	<%= javascript_include_tag "#{Setting.plugin_redmine_app_notifications['faye_server_adress']}/faye.js" %>
 	    <script>
 		    $(document).ready(function()
-			{
+				{
 			    var client = new Faye.Client("<%= Setting.plugin_redmine_app_notifications['faye_server_adress'] %>");
-				var public_subscription = client.subscribe('/notifications/private/<%= User.current.id %>', function(data) {
+					var private_subscription = client.subscribe('/notifications/private/<%= User.current.id %>', function(data) {
 					if($("#notification_count").length == 0) {
 						$("#notificationsLink").parent().after("<li><span id='notification_count'></span></li>");
 					}
 					$("#notification_count").text(data.count);
-				    $(document.body).append("<div class='push-notification hide' id='notification-" + data.id + "'>" + data.message + "</div>");
-				    $("#notification-" + data.id).fadeIn('fast').delay(10000).fadeOut(1200, function() {
-				    	$("#notification-" + data.id).remove();
-				    });
+				  $(document.body).append("<div class='push-notification hide' id='notification-" + data.id + "'>" + data.message + "</div>");
+			    $("#notification-" + data.id).fadeIn('fast').delay(10000).fadeOut(1200, function() {
+			    	$("#notification-" + data.id).remove();
+			    });
 				});
 			});
 		</script>
