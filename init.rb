@@ -1,6 +1,6 @@
 Redmine::Plugin.register :redmine_app_notifications do
   name 'Redmine App Notifications plugin'
-  author 'Michal Vanžura'
+  author 'Michal Vanzura'
   description 'App notifications plugin provides simple in application notifications. It can replace default e-mail notifications.'
   version '0.0.1'
   url 'https://github.com/MichalVanzura/redmine_app_notifications'
