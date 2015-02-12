@@ -14,7 +14,7 @@ module AppNotificationsAccountPatch
   module InstanceMethods
     def account_with_in_app_option
       account = account_without_in_app_option
-      User.safe_attributes 'app_notification'
+      User.safe_attributes 'app_notification', 'app_notification_desktop'
       return account
     end
   end

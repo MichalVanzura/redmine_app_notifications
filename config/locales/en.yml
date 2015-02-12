@@ -1,6 +1,7 @@
 # English strings go here for Rails i18n
 en:
   field_app_notification: "In app notifications"
+  field_app_notification_desktop: "Use desktop notifications if my browser supports it"
   notifications: "Notifications"
   see_all: "See All"
   notifications_events_settings: "In app notifications events settings"

@@ -4,6 +4,17 @@
     <% unless Setting.plugin_redmine_app_notifications['faye_server_adress'].empty? %>
     	<%= javascript_include_tag "#{Setting.plugin_redmine_app_notifications['faye_server_adress']}/faye.js" %>
 	    <script>
+			function showNotification(data)
+			{
+				var notification = new Notification("Redmine", { "tag": "notification-"+data.id, "body": data.message });
+				notification.onclick = function(x) {
+					window.focus();
+					var issueId = this.body.match(/#(\d+)/)[1];
+					this.close();
+					location.href = "<%= url_for(:controller => 'issues', :action => 'show', :id => 0) %>"+issueId;
+				 };
+			}
+
 		    $(document).ready(function()
 				{
 			    var client = new Faye.Client("<%= Setting.plugin_redmine_app_notifications['faye_server_adress'] %>");
@@ -12,10 +23,27 @@
 						$("#notificationsLink").parent().after("<li><span id='notification_count'></span></li>");
 					}
 					$("#notification_count").text(data.count);
-				  $(document.body).append("<div class='push-notification hide' id='notification-" + data.id + "'>" + data.message + "</div>");
-			    $("#notification-" + data.id).fadeIn('fast').delay(10000).fadeOut(1200, function() {
-			    	$("#notification-" + data.id).remove();
-			    });
+					var useDesktopNotifications = false;
+					<% if User.current.app_notification_desktop %>
+					useDesktopNotifications = true;
+					<% end %>
+
+					if (!("Notification" in window) || !useDesktopNotifications) {
+					    $(document.body).append("<div class='push-notification hide' id='notification-" + data.id + "'>" + data.message + "</div>");
+					    $("#notification-" + data.id).fadeIn('fast').delay(10000).fadeOut(1200, function() {
+						$("#notification-" + data.id).remove();
+					    });
+					}
+					else {
+					    if (Notification.permission === "granted")
+							showNotification(data);
+						else if (Notification.permission !== "denied") {
+							Notification.requestPermission(function(permission) {
+								if (permission === "granted")
+									showNotification(data);
+							});
+						}
+					}
 				});
 			});
 		</script>
