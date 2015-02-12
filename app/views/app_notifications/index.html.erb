@@ -1,6 +1,6 @@
 <h2><%= l(:notifications) %></h2>
 
-<%= form_tag("/app-notifications", method: "get") do %>
+<%= form_tag(url_for( {:controller => "app_notifications", :action => "index"} ), method: "get") do %>
 	<%= check_box_tag(:viewed, 1, @viewed) %>
 	<%= label_tag(:viewed, l(:viewed_notification)) %>
 	<%= check_box_tag(:new, 1, @new) %>

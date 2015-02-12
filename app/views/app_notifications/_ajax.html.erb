@@ -10,6 +10,6 @@
 		<% end %>
 	</div>
 	<div id="notificationsFooter">
-		<a href="/app-notifications"><%= l(:see_all) %></a>
+		<a href="<%= url_for( {:controller => "app_notifications", :action => "index"} )%>"><%= l(:see_all) %></a>
 	</div>
 </div>
