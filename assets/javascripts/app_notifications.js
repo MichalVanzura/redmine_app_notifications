@@ -6,7 +6,7 @@ $(document).ready(function()
 
 		$.ajax({
         	type: "GET",
-        	url: "/app-notifications",
+        	url: $(this).attr("href"),
         	dataType: 'html',
         	success: function(data) {
 				$("#notificationsLink").parent().addClass('notification_li');
@@ -26,12 +26,12 @@ $(document).ready(function()
 	//Popup Click
 	$("#notificationsContainer").click(function()
 	{
-		return false
+		return false;
 	});
 
 	$(".view-notification").click(function()
 	{
-		var link = $( this )
+		var link = $( this );
 		$.ajax({
         	type: "GET",
         	url: $(this).attr("href"),
@@ -44,6 +44,6 @@ $(document).ready(function()
 		return false;
 	});
 
-	var countText = $("#notification_count").text()
+	var countText = $("#notification_count").text();
 	$("#notification_count").replaceWith("<span id='notification_count'>" + countText + "</span>");
 });

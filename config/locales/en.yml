@@ -10,7 +10,7 @@ en:
   issue_status_updated: "Issue status updated"
   issue_assigned_to_updated: "Issue assigned"
   issue_priority_updated: "Issue priority updated"
-  faye_server_adress: "Adress of faye server (leave empty for turned off)"
+  faye_server_adress: "Address of faye server (leave empty for turned off)"
   mark_as_seen: "Mark as seen"
   mark_all_as_seen: "Mark all as seen"
   viewed_notification: "viewed notifications"
