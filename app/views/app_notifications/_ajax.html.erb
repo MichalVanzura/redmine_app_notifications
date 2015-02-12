@@ -1,7 +1,7 @@
 <div id="notificationsContainer">
 	<div id="notificationsTitle"><%= l(:notifications) %></div>
 	<div id="notificationsBody" class="notifications">
-		<% @app_notifications.each do |notification| %>
+		<% @app_notifications.where(viewed: false).each do |notification| %>
 			<% if notification.journal.present? %>
 				<%= render :partial => 'issues/issue_ajax_edit', :formats => [:html], :locals => { :notification => notification, :journal => notification.journal, :journal_details => details_to_strings(notification.journal.visible_details(notification.author), false, :only_path => false) }%>
 			<% else %>
