@@ -1,6 +1,7 @@
 # English strings go here for Rails i18n
 en:
   field_app_notification: "Notifikace v aplikaci"
+  field_app_notification_desktop: "Použít desktop notifikace, jestliže to můj prohlížeč podporuje"
   notifications: "Notifikace"
   see_all: "Všechny"
   notifications_events_settings: "Nastavení udalostí notifikací"
@@ -17,3 +18,4 @@ en:
   new_notification: "nové notifikace"
   filter_button: "Filtrovat"
   view_app_notifications: "Zobrazit notifikace"
+  unreachable_faye_server: "Váš Faye server je nedostupný"
