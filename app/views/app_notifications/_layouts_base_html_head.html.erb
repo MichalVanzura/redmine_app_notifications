@@ -17,7 +17,13 @@
 
 		    $(document).ready(function()
 				{
-			    var client = new Faye.Client("<%= Setting.plugin_redmine_app_notifications['faye_server_adress'] %>");
+					try {
+						var client = new Faye.Client("<%= Setting.plugin_redmine_app_notifications['faye_server_adress'] %>");
+					} catch(e) {
+						$("#notificationsLink").parent().after("<li><span class=\"notification-title\">(<%= l(:unreachable_faye_server) %>)</span></li>");
+						return true;
+					}
+
 					var private_subscription = client.subscribe('/notifications/private/<%= User.current.id %>', function(data) {
 					if($("#notification_count").length == 0) {
 						$("#notificationsLink").parent().after("<li><span id='notification_count'></span></li>");
