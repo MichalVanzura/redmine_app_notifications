@@ -18,3 +18,4 @@ fr:
   new_notification: "Notifications nouvelles"
   filter_button: "Filtrer"
   view_app_notifications: "Voir les notifications"
+  unreachable_faye_server: "Votre server Faye est inaccessible"
