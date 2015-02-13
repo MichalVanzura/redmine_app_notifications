@@ -36,7 +36,7 @@ class AppNotificationsController < ApplicationController
     if @notification.recipient == User.current 
       AppNotification.update(@notification, :viewed => true)
       if request.xhr?
-        if @notification.journal.present?
+        if @notification.is_edited?
           render :partial => 'issues/issue_edit', :formats => [:html], :locals => { :notification => @notification, :journal => @notification.journal }
         else
           render :partial => 'issues/issue_add', :formats => [:html], :locals => { :notification => @notification }

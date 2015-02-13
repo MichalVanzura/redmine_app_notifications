@@ -33,3 +33,5 @@ end
 
 require_dependency 'app_notifications_hook_listener'
 require_dependency 'app_notifications_account_patch'
+require_dependency 'app_notifications_issues_patch'
+require_dependency 'app_notifications_journals_patch'
