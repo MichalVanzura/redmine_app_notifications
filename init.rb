@@ -27,7 +27,7 @@ Redmine::Plugin.register :redmine_app_notifications do
       'issue_status_updated' => 'on', 
       'issue_assigned_to_updated' => 'on', 
       'issue_priority_updated' => 'on',
-      'faye_server_adress' => 'http://localhost:9292/faye'
+      'faye_server_adress' => 'http://ip_address_or_name_of_your_server:9292/faye'
     }, :partial => 'settings/app_notifications_settings'
 end
 
