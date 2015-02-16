@@ -6,7 +6,7 @@
 	    <script>
 			function showNotification(data)
 			{
-				var notification = new Notification("Redmine", { "tag": "notification-"+data.id, "body": data.message });
+				var notification = new Notification("Redmine", { "tag": "notification-"+data.message.match(/#(\d+)/)[1], "body": data.message });
 				notification.onclick = function(x) {
 					window.focus();
 					var issueId = this.body.match(/#(\d+)/)[1];
