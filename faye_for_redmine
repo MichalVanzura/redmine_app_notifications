@@ -1,0 +1,76 @@
+#!/bin/sh
+### BEGIN INIT INFO
+# Provides:          faye for Redmine
+# Required-Start:    $local_fs $network
+# Required-Stop:	 $local_fs $network
+# Should-Start:
+# Default-Start:     2 3 4 5
+# Default-Stop:		 0 1 6
+# Short-Description: Starts faye server for Redmine
+# Description:       Faye is a push server which is used by the Redmine's plugin
+#                    in_app_notification
+### END INIT INFO
+
+set -e
+
+#####
+# Modify the variables to fit your needs
+#####
+
+###
+# Must modify
+###
+IN_APP_NOTIFICATION_ROOT_PATH=/root/path/to/your/redmine_app_notifications
+###
+
+###
+# Probably need to modify
+###
+SUDO_USER=www-data
+###
+
+###
+# Not necessary to modify
+###
+FAYE_RU=faye.ru
+PID=thin.pid
+REDMINE_ENVIRONMENT=production
+PORT=9292
+###
+
+CMD="cd $IN_APP_NOTIFICATION_ROOT_PATH && rackup $FAYE_RU -D -P $PID -E $REDMINE_ENVIRONMENT -s thin -p $PORT -o 0.0.0.0"
+
+set -u
+
+do_start () {
+	export RAILS_ENV="$REDMINE_ENVIRONMENT"
+	run "$CMD"
+}
+
+do_stop () {
+	run "cd $IN_APP_NOTIFICATION_ROOT_PATH && echo '' >> $PID && pkill -9 -F $PID"
+}
+
+run () {
+	if [ "$(id -un)" = "$SUDO_USER" ]; then
+		eval "$1"
+	else
+		su -c "$1" - $SUDO_USER
+	fi
+}
+
+case "$1" in
+  start)
+	do_start
+	;;
+  stop)
+	do_stop
+	;;
+  restart)
+	do_stop; do_start
+	;;
+  *)
+	echo "Usage: $0 [start|stop|restart]" >&2
+	exit 1
+	;;
+esac
