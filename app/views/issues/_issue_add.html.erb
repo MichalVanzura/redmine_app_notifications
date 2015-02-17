@@ -1,3 +1,4 @@
+<% unless notification.issue.nil? %>
 <%if !notification.viewed %>
 	<a class="view-notification" href="<%= url_for(:controller => 'app_notifications', :action => 'view', :id => notification.id, :issue_id => notification.issue.id) %>">
 		<%= l(:mark_as_seen) %>
@@ -8,3 +9,4 @@
 		<strong><%= l(:text_issue_added, :id => "##{notification.issue.id}", :author => h(notification.issue.author)) %></strong>
 	</a>
 </h3>
+<% end %>

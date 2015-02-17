@@ -1,3 +1,4 @@
+<% unless notification.issue.nil? %>
 <%if !notification.viewed %>
 	<a class="view-notification" href="<%= url_for(:controller => 'app_notifications', :action => 'view', :id => notification.id, :issue_id => notification.issue.id, :anchor => "change-#{notification.journal.id}") %>">
 		<%= l(:mark_as_seen) %>
@@ -20,3 +21,4 @@
 </ul>
 
 <%= textilizable(journal, :notes, :only_path => false) %>
+<% end %>
