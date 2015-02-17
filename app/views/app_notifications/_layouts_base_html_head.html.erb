@@ -4,14 +4,19 @@
     <% unless Setting.plugin_redmine_app_notifications['faye_server_adress'].empty? %>
     	<%= javascript_include_tag "#{Setting.plugin_redmine_app_notifications['faye_server_adress']}/faye.js" %>
 	    <script>
+			function getIssueIdFromMessage(message)
+			{
+				return message.match(/#(\d+)/)[1];
+			}
+
 			function showNotification(data)
 			{
-				var notification = new Notification("Redmine", { "tag": "notification-"+data.message.match(/#(\d+)/)[1], "body": data.message });
+				var notification = new Notification("Redmine", { "tag": "notification-"+getIssueIdFromMessage(data.message), "body": data.message });
 				notification.onclick = function(x) {
 					window.focus();
-					var issueId = this.body.match(/#(\d+)/)[1];
+					var issueId = getIssueIdFromMessage(this.body);
 					this.close();
-					location.href = "<%= url_for(:controller => 'issues', :action => 'show', :id => 0) %>"+issueId;
+					location.href = "<%= url_for(:controller => 'app_notifications', :action => 'index') %>/"+data.id+"?issue_id="+issueId;
 				 };
 			}
 
