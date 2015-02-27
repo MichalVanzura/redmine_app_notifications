@@ -11,7 +11,7 @@ class AppNotificationsController < ApplicationController
     end
 
     if !params.has_key?(:viewed) && !params.has_key?(:new) && !params.has_key?(:commit) 
-      @viewed = true
+      @viewed = false
       @new = true
     else
       params.has_key?(:viewed) ? @viewed = params['viewed'] : @viewed = false
