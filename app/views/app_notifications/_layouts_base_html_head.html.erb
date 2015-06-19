@@ -11,7 +11,7 @@
 
 			function showNotification(data)
 			{
-				var notification = new Notification("Redmine", { "tag": "notification-"+getIssueIdFromMessage(data.message), "body": data.message });
+				var notification = new Notification("Redmine", { "tag": "notification-"+getIssueIdFromMessage(data.message), "body": data.message, "icon": data.avatar });
 				notification.onclick = function(x) {
 					window.focus();
 					var issueId = getIssueIdFromMessage(this.body);
