@@ -1,7 +1,7 @@
 class UpdateUsers2 < ActiveRecord::Migration
     def self.up
         change_table :users do |t|
-            t.column :app_notification_desktop, :boolean, :default => 0
+            t.column :app_notification_desktop, :boolean, :default => false
         end
     end
 
